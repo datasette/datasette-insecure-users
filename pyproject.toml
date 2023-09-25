@@ -1,0 +1,33 @@
+[project]
+name = "datasette-insecure-users"
+version = "0.1"
+description = "An insecure Datasette authentication plugin for demos and trusted private instances"
+readme = "README.md"
+authors = [{name = "Alex Garcia"}]
+license = {text = "Apache-2.0"}
+classifiers=[
+    "Framework :: Datasette",
+    "License :: OSI Approved :: Apache Software License"
+]
+requires-python = ">=3.8"
+dependencies = [
+    "datasette>=1.0a6"
+]
+
+[project.urls]
+Homepage = "https://github.com/datasette/datasette-insecure-users"
+Changelog = "https://github.com/datasette/datasette-insecure-users/releases"
+Issues = "https://github.com/datasette/datasette-insecure-users/issues"
+CI = "https://github.com/datasette/datasette-insecure-users/actions"
+
+[project.entry-points.datasette]
+insecure_users = "datasette_insecure_users"
+
+[project.optional-dependencies]
+test = ["pytest", "pytest-asyncio"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "strict"
+
+[tool.setuptools.package-data]
+datasette_insecure_users = ["static/*", "templates/*"]

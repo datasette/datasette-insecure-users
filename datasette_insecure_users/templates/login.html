@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+
+{% block title %}Log in{% endblock %}
+
+{% block content %}
+<h1>Log in</h1>
+
+<style type="text/css">
+
+form {
+  width: 420px;
+  margin: 0 auto;
+}
+
+form.password-login label {
+    font-size: 0.8em;
+    margin-bottom: 0.4em;
+    display: block;
+    float: none;
+}
+form input.password-login-input {
+    width: 80%;
+    max-width: 400px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    padding: 9px 4px;
+    display: inline-block;
+    font-size: 1em;
+    font-family: Helvetica, sans-serif;
+}
+</style>
+
+{% if error %}
+    <p class="message-error">{{ error }}</p>
+{% endif %}
+
+<form class="password-login" action="/-/datasette-insecure-users/login" method="post">
+    <div>
+        <p>
+            <label for="id_username">Username</label>
+            <input class="password-login-input" id="id_username" type="text" name="username">
+        </p>
+        <p>
+            <label for="id_password">Password (optional)</label>
+            <input class="password-login-input" id="id_password" type="password" name="password">
+        </p>
+        <input type="hidden" name="csrftoken" value="{{ csrftoken() }}">
+        <p><input type="submit" value="Log in"></p>
+        <p>
+          New to this instance? Make up a password.
+          <br/>
+          Returning? Use the same username/password.
+        </p>
+    </div>
+</form>
+
+{% endblock %}
